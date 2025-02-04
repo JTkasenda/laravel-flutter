@@ -53,10 +53,15 @@ class AuthenticationController extends Controller
         $user = User::whereUsername($request->username)->first();
         // dd($user);
         if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(["error" => "Invalid credentials"], 422);
+            return response([
+                "message" => "Invalid credentials"
+            ], 422);
         }
-        else{
-            return response()->json($user);
-        }
+
+        $token = $user->createToken('forumapp')->plainTextToken;
+        return response([
+            "user" => $user,
+            "token" => $token
+        ], 200);
     }
 }
