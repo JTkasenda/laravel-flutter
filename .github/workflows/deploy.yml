@@ -34,8 +34,3 @@ jobs:
             php artisan config:cache || { echo "❌ Cache config échoué"; exit 1; }
 
             echo "✅ Déploiement terminé avec succès"
-
-
-
-
-            
