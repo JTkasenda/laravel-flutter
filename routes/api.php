@@ -9,6 +9,11 @@ use App\Http\Controllers\Feed\FeedController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+//health
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok']);
+});
 Route::post("/register", [AuthenticationController::class, 'register']);
 Route::post("/login", [AuthenticationController::class, 'login']);
 Route::get("/feeds", [FeedController::class, 'index'])->middleware("auth:sanctum");
