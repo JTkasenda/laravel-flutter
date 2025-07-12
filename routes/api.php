@@ -12,7 +12,7 @@ Route::get('/user', function (Request $request) {
 
 //health
 Route::get('/health', function () {
-    return response()->json(['status' => 'ok']);
+    return response()->json(['status' => true]);
 });
 Route::post("/register", [AuthenticationController::class, 'register']);
 Route::post("/login", [AuthenticationController::class, 'login']);
