@@ -24,13 +24,4 @@ jobs:
             echo "Pull depuis la branche Dev"
             git pull origin Dev || { echo "Git pull échoué"; exit 1; }
 
-            # echo "Installation des dépendances Composer"
-            # composer install --no-interaction --prefer-dist --optimize-autoloader || { echo "Composer échoué"; exit 1; }
-
-            # echo "Exécution des migrations"
-            # php artisan migrate --force || { echo "Migrations échouées"; exit 1; }
-
-            echo "Mise en cache de la config"
-            php artisan config:cache || { echo "Cache config échoué"; exit 1; }
-
-            echo "Déploiement terminé avec succès"
+            echo "✅ Déploiement terminé avec succès"
