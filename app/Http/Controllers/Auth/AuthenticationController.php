@@ -22,7 +22,10 @@ class AuthenticationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+            return response(
+            [
+                "message" => $validator->errors(),
+            ], 400);
         }
         $userdata = [
             "name" => $request->name,
