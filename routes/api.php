@@ -23,4 +23,3 @@ Route::get("/feed/comments/{feed_id}", [FeedController::class, "getComments"])->
 Route::post("/feed/comments/create", [FeedController::class, "CreateComment"])->middleware("auth:sanctum"); 
 
 
- 
