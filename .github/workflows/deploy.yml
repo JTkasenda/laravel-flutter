@@ -19,7 +19,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo "Début du déploiement..."
-            cd /home/u377393644/domains/cafe-numerique.org/public_html/v-and-v || { echo "Dossier introuvable"; exit 1; }
+            cd /home/u377393644/domains/cafe-numerique.org/public_html/v-and-v/vv-cn || { echo "Dossier introuvable"; exit 1; }
             
             echo "Pull depuis la branche Dev"
             git pull origin Dev || { echo "Git pull échoué"; exit 1; }
