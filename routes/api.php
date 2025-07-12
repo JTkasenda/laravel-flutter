@@ -15,4 +15,4 @@ Route::get("/feeds", [FeedController::class, 'index'])->middleware("auth:sanctum
 Route::post("/feed/store", [FeedController::class, 'store'])->middleware("auth:sanctum");
 Route::post("/feed/like/{feed_id}", [FeedController::class, 'likePost'])->middleware("auth:sanctum");
 Route::get("/feed/comments/{feed_id}", [FeedController::class, "getComments"])->middleware("auth:sanctum");
-Route::post("/feed/comments/create", [FeedController::class, "CreateComment"])->middleware("auth:sanctum");
+Route::post("/feed/comments/create", [FeedController::class, "CreateComment"])->middleware("auth:sanctum"); 
