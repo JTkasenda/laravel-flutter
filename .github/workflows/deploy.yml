@@ -3,7 +3,7 @@ name: Deploy Laravel to Hostinger
 on:
   push:
     branches:
-      - main
+      - Dev
 
 jobs:
   deploy:
@@ -18,8 +18,20 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /home/9b1d284cbe17b9e3/public_html/v-and-v
-            git pull origin Dev
-            composer install --no-interaction --prefer-dist --optimize-autoloader
-            php artisan migrate --force
-            php artisan config:cache
+            echo "🚀 Début du déploiement..."
+            cd /home/9b1d284cbe17b9e3/public_html/v-and-v || { echo "❌ Dossier introuvable"; exit 1; }
+            
+            echo "🔄 Pull depuis la branche Dev"
+            git pull origin Dev || { echo "❌ Git pull échoué"; exit 1; }
+
+            echo "📦 Installation des dépendances Composer"
+            composer install --no-interaction --prefer-dist --optimize-autoloader || { echo "❌ Composer échoué"; exit 1; }
+
+            echo "📂 Exécution des migrations"
+            php artisan migrate --force || { echo "❌ Migrations échouées"; exit 1; }
+
+            echo "⚙️ Mise en cache de la config"
+            php artisan config:cache || { echo "❌ Cache config échoué"; exit 1; }
+
+            echo "✅ Déploiement terminé avec succès"
+
